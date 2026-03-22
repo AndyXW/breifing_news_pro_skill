@@ -1,0 +1,45 @@
+# 敏感配置文件（切勿提交）
+.env
+.env.local
+.env.*.local
+
+# API Keys 和凭证
+*.key
+*.secret
+*credentials*
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+
+# 依赖目录
+node_modules/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件
+tmp/
+temp/
+.cache/
+
+# 构建输出
+dist/
+build/
+
+# 测试覆盖率
+coverage/
+
+# 本地配置（可选）
+config.local.js
+*.local.js

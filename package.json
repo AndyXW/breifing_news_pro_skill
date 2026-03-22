@@ -1,0 +1,38 @@
+{
+  "name": "a-share-research-pro",
+  "version": "1.0.0",
+  "description": "专业版 A 股投研复盘简报，支持晨间/晚间双版本，使用 AI 深度分析新闻价值",
+  "type": "module",
+  "main": "scripts/index.js",
+  "scripts": {
+    "start": "node scripts/index.js",
+    "evening": "node scripts/index.js --edition evening",
+    "morning": "node scripts/index.js --edition morning",
+    "test": "node scripts/test.js",
+    "check-env": "node scripts/check-env.js"
+  },
+  "keywords": [
+    "a-share",
+    "research",
+    "briefing",
+    "trading",
+    "finance",
+    "stock"
+  ],
+  "author": "闪电狗 ⚡",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^3.3.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/a-share-research-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/a-share-research-pro/issues"
+  }
+}

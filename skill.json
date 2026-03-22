@@ -1,0 +1,62 @@
+{
+  "id": "a-share-research-pro",
+  "name": "A 股投研参考 Pro",
+  "description": "专业版 A 股投研复盘简报，支持晨间/晚间双版本，使用 AI 深度分析新闻价值，提供实战导向的交易策略参考",
+  "version": "1.0.0",
+  "author": "闪电狗 ⚡",
+  "license": "MIT",
+  "tags": ["finance", "a-share", "research", "briefing", "ai", "trading"],
+  "entry": "scripts/index.js",
+  "runtime": "node",
+  "schedule": {
+    "evening": {
+      "cron": "0 21 * * 1-5",
+      "command": "node scripts/index.js --edition evening",
+      "description": "晚间复盘（交易日 21:00）"
+    },
+    "morning": {
+      "cron": "0 8 * * 1-5",
+      "command": "node scripts/index.js --edition morning",
+      "description": "晨间盘前（交易日 08:30）"
+    }
+  },
+  "config": {
+    "env": {
+      "TAVILY_API_KEY": "required",
+      "FEISHU_USER_ID": "optional"
+    },
+    "feishu": {
+      "userId": "${FEISHU_USER_ID}",
+      "maxWords": 1500
+    },
+    "ai": {
+      "provider": "openclaw",
+      "description": "使用 OpenClaw 内置 AI 能力，不需要额外 API Key"
+    }
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.0",
+    "dotenv": "^16.3.1"
+  },
+  "relatedSkills": [
+    {
+      "id": "wencai-quant-score",
+      "name": "问财量化评分",
+      "required": false,
+      "description": "可选依赖，用于获取行业板块 4 维量化数据（资金/价格/情绪/估值）",
+      "integration": "通过 Python 脚本调用，在简报中引用量化评分数据"
+    }
+  ],
+  "requirements": {
+    "nodejs": ">=16.0.0",
+    "python": ">=3.8 (可选，用于问财量化评分)",
+    "env": [
+      "TAVILY_API_KEY"
+    ],
+    "optional_env": [
+      "FEISHU_USER_ID",
+      "FEISHU_APP_ID",
+      "FEISHU_APP_SECRET"
+    ]
+  }
+}
