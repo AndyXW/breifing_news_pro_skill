@@ -15,7 +15,7 @@ ls ~/.openclaw/skills/a-share-research-pro
 
 **预期输出**：
 ```
-.env  .env.example  .gitignore  README.md  skill.json  scripts/  package.json
+.env.example  .gitignore  README.md  skill.json  scripts/  package.json  docs/
 ```
 
 ---
@@ -37,22 +37,21 @@ found 0 vulnerabilities
 
 ### 步骤 3：配置环境变量
 
-环境变量已预配置，只需确认即可：
-
 ```bash
-# 查看配置（已预填充）
-cat .env
-```
+# 复制配置模板
+cp .env.example .env
 
-**已配置项**：
-- ✅ `TAVILY_API_KEY`：tvly-dev-2eGAOK-...（邢总提供）
-- ✅ `DEEPSEEK_API_KEY`：sk-e645343f...（使用原 v4.0 Key）
-- ✅ `FEISHU_USER_ID`：ou_xxx...（邢总飞书 ID）
-
-**如需修改**：
-```bash
 # 编辑 .env 文件
 notepad .env
+```
+
+**必需配置**：
+```bash
+# Tavily API Key（必需）
+TAVILY_API_KEY=tvly-your_api_key_here
+
+# 飞书用户 ID（可选，用于推送）
+FEISHU_USER_ID=ou_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ---
@@ -66,6 +65,9 @@ npm run check-env
 **预期输出**：
 ```
 ✅ 所有必需配置已正确设置！
+
+📊 AI 配置说明:
+   使用 OpenClaw 内置 AI 能力（推荐）
 
 可以运行以下命令测试:
   npm run evening  # 生成晚间版简报
@@ -95,25 +97,19 @@ npm run evening
 📊 各模块获取数量:
   • 宏观政策：15 条
   • 晚间公告：15 条
-  • 外盘映射：15 条
   • 机构复盘：15 条
   • A 股收评：15 条
   • 行业深度：15 条
 
-✅ 总计：90 条 → 去重后：85 条
+✅ 总计：75 条 → 去重后：70 条
 
-[Step 2] AI 深度分析...
-  调用 AI API（80 条新闻，批量处理）...
-  ✅ AI 分析完成（1200 字符）
+[Step 2] 生成简报...
+✅ 简报生成成功
 
-========================================
-  最终简报
-========================================
-
-**📅 【A 股投研复盘与推演】晚间版 | 2026-03-22 周六**
+**📅 【A 股投研复盘与推演】晚间版 | 2026-03-22 周日**
 ━━━━━━━━━━━━━━━━━━
 
-**一、🌍 宏观政策与外盘映射**
+**一、🌍 宏观政策和重要新闻**
 ...
 ```
 
@@ -156,63 +152,6 @@ OpenClaw 会自动在交易日执行。
 
 ---
 
-## 🔧 可选配置
-
-### 1. 集成问财量化评分
-
-如果需要使用问财量化评分增强简报：
-
-```bash
-# 确认问财 Skill 已安装
-ls ~/.openclaw/skills/wencai-quant-score
-
-# 测试问财查询
-cd ~/.openclaw/skills/wencai-quant-score/scripts
-python query_wencai_quant.py
-```
-
-**集成方法**：见 [INTEGRATION_WENCAI.md](./INTEGRATION_WENCAI.md)
-
----
-
-### 2. 自定义 AI 模型
-
-如需使用其他 AI 模型（如通义千问、Kimi）：
-
-编辑 `.env`：
-
-```bash
-# 使用通义千问
-DEEPSEEK_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
-DEEPSEEK_MODEL=qwen-plus
-
-# 使用 Kimi
-DEEPSEEK_BASE_URL=https://api.moonshot.cn/v1
-DEEPSEEK_MODEL=moonshot-v1-8k
-```
-
----
-
-### 3. 调整搜索模块
-
-如需添加/修改搜索模块：
-
-编辑 `scripts/config.js`：
-
-```javascript
-SEARCH_MODULES: {
-  // 添加新模块
-  CUSTOM: {
-    name: '自定义模块',
-    query: '你的搜索关键词',
-    include_domains: ['example.com'],
-    max_results: 15
-  }
-}
-```
-
----
-
 ## ❓ 常见问题
 
 ### Q: Tavily API 配额不够用怎么办？
@@ -247,22 +186,13 @@ FEISHU_USER_ID=ou_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  # 新的用户 ID
 
 ---
 
-### Q: 如何查看历史简报？
-
-A: 简报会输出到控制台和飞书，建议：
-
-1. 在飞书中查看历史消息
-2. 或添加文件输出功能（需自行开发）
-
----
-
 ## 📚 更多文档
 
 | 文档 | 说明 |
 |------|------|
 | [README.md](../README.md) | 完整使用文档 |
-| [INTEGRATION_WENCAI.md](./INTEGRATION_WENCAI.md) | 问财集成指南 |
-| [STRUCTURE.md](../STRUCTURE.md) | 项目结构说明 |
+| [docs/ARCHITECTURE.md](./ARCHITECTURE.md) | 架构说明 |
+| [docs/QUICKSTART.md](./QUICKSTART.md) | 本文件（快速开始） |
 | [CHANGELOG.md](../CHANGELOG.md) | 版本更新日志 |
 
 ---
@@ -271,7 +201,7 @@ A: 简报会输出到控制台和飞书，建议：
 
 **下一步**：
 1. ✅ 测试运行：`npm run evening`
-2. ✅ 查看飞书消息（已自动推送）
+2. ✅ 查看飞书消息（已配置推送）
 3. ✅ 配置定时任务（OpenClaw 自动执行）
 
 **如有问题**：

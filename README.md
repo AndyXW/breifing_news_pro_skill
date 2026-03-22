@@ -124,15 +124,14 @@ MAX_WORDS=1500
 |-------|------|------|
 | **wencai-quant-score** | 问财量化评分 | 获取行业板块 4 维量化数据（资金/价格/情绪/估值） |
 
-### 协作方式
+### 当前状态
 
-```javascript
-// 在投研简报中引用问财量化评分
-import { getQuantScore } from '../wencai-quant-score/lib.js';
+**问财量化评分**：暂不支持（网络问题）
 
-const sectorScore = await getQuantScore('半导体');
-// 在简报中加入：半导体板块综合评分：85/100
-```
+**未来计划**：
+- 修复问财 API 集成
+- 添加真实资金流向数据
+- 集成龙虎榜数据
 
 ---
 

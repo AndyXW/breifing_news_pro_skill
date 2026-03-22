@@ -38,18 +38,8 @@
     "node-fetch": "^3.3.0",
     "dotenv": "^16.3.1"
   },
-  "relatedSkills": [
-    {
-      "id": "wencai-quant-score",
-      "name": "问财量化评分",
-      "required": false,
-      "description": "可选依赖，用于获取行业板块 4 维量化数据（资金/价格/情绪/估值）",
-      "integration": "通过 Python 脚本调用，在简报中引用量化评分数据"
-    }
-  ],
   "requirements": {
     "nodejs": ">=16.0.0",
-    "python": ">=3.8 (可选，用于问财量化评分)",
     "env": [
       "TAVILY_API_KEY"
     ],
