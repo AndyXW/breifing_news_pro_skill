@@ -37,10 +37,6 @@
 #### 1. 安装 Skill
 
 ```bash
-# 方法 A: 使用 ClawHub（推荐）
-clawhub install a-share-research-pro
-
-# 方法 B: 手动克隆
 cd ~/.openclaw/skills
 git clone https://github.com/your-repo/a-share-research-pro.git
 ```
@@ -60,7 +56,6 @@ cp .env.example .env
 
 # 编辑 .env 文件，填入你的 API Key
 # - TAVILY_API_KEY: 从 https://tavily.com/ 获取
-# - DEEPSEEK_API_KEY: 从 https://platform.deepseek.com/ 获取
 # - FEISHU_USER_ID: 飞书用户 ID（可选，用于推送消息）
 ```
 
@@ -94,7 +89,6 @@ npm run morning
 
 | 变量名 | 说明 | 默认值 |
 |--------|------|--------|
-| `DEEPSEEK_API_KEY` | DeepSeek AI API Key（不配置则使用 OpenClaw 内置 AI） | - |
 | `FEISHU_USER_ID` | 飞书用户 ID（用于推送） | - |
 | `FEISHU_APP_ID` | 飞书 App ID | - |
 | `FEISHU_APP_SECRET` | 飞书 App Secret | - |
@@ -278,28 +272,6 @@ a-share-research-pro/
 - ⚠️ **使用独立 API Key**：不要与其他项目共用
 
 ---
-
-## ❓ 常见问题
-
-### Q: Tavily API 配额不够用怎么办？
-
-A: 可以调整 `MAX_NEWS_PER_MODULE` 参数减少每次搜索的新闻数量，或者升级到 Tavily 付费计划。
-
-### Q: AI 生成的内容不够准确？
-
-A: 可以调整 `scripts/AI_PROMPT.md` 中的提示词，或者更换 AI 模型（修改 `DEEPSEEK_BASE_URL` 和 `DEEPSEEK_MODEL`）。
-
-### Q: 如何集成到现有的 OpenClaw 系统？
-
-A: 本 Skill 已兼容 OpenClaw 框架，只需放入 `~/.openclaw/skills/` 目录并配置 `.env` 即可。
-
-### Q: 支持其他 AI 模型吗？
-
-A: 支持！修改 `.env` 中的 `DEEPSEEK_BASE_URL` 和 `DEEPSEEK_MODEL` 即可使用其他兼容 OpenAI 格式的 AI 服务。
-
----
-
-## 📝 更新日志
 
 ### v1.0.0 (2026-03-22)
 
